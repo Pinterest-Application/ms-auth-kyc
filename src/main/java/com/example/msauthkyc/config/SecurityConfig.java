@@ -115,7 +115,9 @@ public class SecurityConfig {
 
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
-            // todo redirect yazilsin
+            String accessToken = client.getAccessToken().getTokenValue();
+
+            response.sendRedirect("http://127.0.0.1:5173/auth/callback?token=" + accessToken);
         };
     }
 }
